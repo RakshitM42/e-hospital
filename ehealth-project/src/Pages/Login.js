@@ -23,11 +23,11 @@ const theme = createTheme();
 function SignUp(props) {
   const handleSubmit = (event) => {
     event.preventDefault();
-    const data = new FormData(event.currentTarget);
-    const value = Object.fromEntries(data.entries());
     try {
 
-     
+      const data = new FormData(event.currentTarget);
+      const value = Object.fromEntries(data.entries());
+      console.log(value);
       const requestOptions = {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
@@ -36,10 +36,7 @@ function SignUp(props) {
       const response = fetch('https://fathomless-gorge-20039.herokuapp.com/api/createUser', requestOptions)
         .then((response) => {
           if(!response.ok) throw new Error(response.status);
-          else window.location.href=value.typeofuser=='Doctor'?'/DoctorPortal':'/PatientPortal' ;
-        }).catch((err) => {
-          console.log(err);
-          window.location.href=value.typeofuser=='Doctor'?'/DoctorPortal':'/PatientPortal';
+          else window.location.href='/route/Login' ;
         })
         console.log('response is ' + JSON. stringify(response));
         
@@ -48,13 +45,12 @@ function SignUp(props) {
 
     } catch (err) {
       console.log(err);
-      window.location.href=value.typeofuser=='Doctor'?'/DoctorPortal':'/PatientPortal';
     }
 
   };
 
   return (
-    <div style={{ backgroundImage: `url(${background})`,backgroundSize: 'cover' }}>
+    <div style={{ backgroundImage: `url(${background})`,backgroundSize: 'cover'  }}>
       <div style={{ backgroundColor: 'rgba(255,255,255,0.5)' }}> 
     <ThemeProvider theme={theme}>
       <Container component="main" maxWidth="xs">
@@ -80,7 +76,7 @@ function SignUp(props) {
           }}
         >
       
-          <Box component="form" noValidate onSubmit={handleSubmit} sx={{ mt: -1 }}>
+          <Box component="form" noValidate onSubmit={handleSubmit} sx={{ mt: -1 , marginBottom: 100 }}>
             <Grid container spacing={2}>
               <Grid item xs={12} sm={6}>
                 <TextField
@@ -198,10 +194,6 @@ function SignUp(props) {
                   autoComplete="new-password"
                 />
               </Grid>
-
-              <Grid item xs={12}>
-                
-              </Grid>
               <Button
               type="submit"
               fullWidth
@@ -216,8 +208,9 @@ function SignUp(props) {
             </Grid>
           </Box>
         </Box>
-      </Container>
       <Footer/>
+      </Container>
+     
 
     </ThemeProvider>
     </div>

@@ -1,11 +1,5 @@
 import * as React from 'react';
-import AppBar from '@mui/material/AppBar';
-import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
-import Card from '@mui/material/Card';
-import CardActions from '@mui/material/CardActions';
-import CardContent from '@mui/material/CardContent';
-import CardHeader from '@mui/material/CardHeader';
 import CssBaseline from '@mui/material/CssBaseline';
 import Grid from '@mui/material/Grid';
 import Toolbar from '@mui/material/Toolbar';
@@ -13,27 +7,27 @@ import Typography from '@mui/material/Typography';
 import Link from '@mui/material/Link';
 import GlobalStyles from '@mui/material/GlobalStyles';
 import Container from '@mui/material/Container';
-import { blue, red } from '@mui/material/colors';
+
 
 
 const footers = [
   {
-    title: 'Company',
-    description: ['Team'],
+    title: 'HOSPITAL VISIT  ',
+    description: [{name:'Services',pageURL: 'Hospitalvisit'}],
+  },
+
+  {
+    title: 'PROGRAMS',
+    description: [{name:'Facilities',pageURL: '/Cornprog'}],
+  },
+
+  {
+    title: 'INFORMATION',
+    description: [{name:'Platforms',pageURL: '/Newsinfo'}],
   },
   {
-    title: 'Features',
-    description: [
-      'Cool stuff',
-    ],
-  },
-  {
-    title: 'Resources',
-    description: ['Resource'],
-  },
-  {
-    title: 'Legal',
-    description: ['Privacy policy', 'Terms of use'],
+    title: 'CONTACT US',
+    description: [{name:'Need Help?',pageURL: '/Contactus'}],
   },
 ];
 
@@ -47,7 +41,8 @@ function PricingContent() {
       <CssBaseline />
       <div 
         style={{  
-          backgroundImage: "url(" + require("./749813.jpg") + ")",
+          backgroundImage: "url(" + require("./bg_ehospital.jpg") + ")",
+           backgroundColor: 'rgba(255,255,255,0.5)',
           backgroundPosition: 'center',
           backgroundSize: 'cover',
           backgroundRepeat: 'no-repeat',
@@ -61,42 +56,13 @@ function PricingContent() {
             
           </Typography>
           <nav  >
-            {/* <Link
-              variant="button"
-              color="text.primary"
-              href="#"
-              sx={{ my: 1, mx: 1.5 }}
-            >
-              Tool1
-            </Link>
-            <Link
-              variant="button"
-              color="text.primary"
-              href="#"
-              sx={{ my: 1, mx: 1.5 }}
-            >
-              Tool2
-            </Link>
-            <Link
-              variant="button"
-              color="text.primary"
-              href="#"
-              sx={{ my: 1, mx: 1.5 }}
-              href="https://e-hospital.ca/route/PatientPortal"
-            >
-              Tool3
-            </Link> */}
+           
           </nav>
-          <Button href="https://e-hospital.ca/route/Login" variant="outlined" sx={{ my: 1, mx: 1.5 }}>
+          <Button href="/Login" variant="outlined" sx={{ my: 1, mx: 1.5 }}>
             Login
           </Button>
         </Toolbar>
-      {/* </AppBar> */}
-      {/* Hero unit */}
-
-   
-
-
+     
       <Container disableGutters maxWidth="sm" component="main" sx={{ pt: 8, pb: 6 }}   >
         <Typography
           component="h1"
@@ -117,7 +83,7 @@ function PricingContent() {
         component="footer"
         sx={{
           borderTop: (theme) => `1px solid ${theme.palette.divider}`,
-          mt: 30,
+          mt: 20,
           py: [3, 6],
         }}
       >
@@ -129,9 +95,9 @@ function PricingContent() {
               </Typography>
               <ul>
                 {footer.description.map((item) => (
-                  <li key={item}>
-                    <Link href="#" variant="subtitle1" color="text.secondary">
-                      {item}
+                  <li key={item.name}>
+                    <Link href={item.pageURL} variant="subtitle1" color="text.secondary">
+                      {item.name}
                     </Link>
                   </li>
                 ))}

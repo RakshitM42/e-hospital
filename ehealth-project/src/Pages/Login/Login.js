@@ -11,6 +11,8 @@ import Container from '@mui/material/Container';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import Toolbar from '@mui/material/Toolbar';
 import Link from '@mui/material/Link';
+import background from "./con14.jpg";
+import Footer from "../../Components/Footer";
 
 
 
@@ -54,7 +56,7 @@ function Login(props) {
         if (data.get('password') === dbpassword) {
           
          
-          window.location.href = 'https://e-hospital.ca/route/PatientPortal';
+          window.location.href = '/route/PatientPortal';
         }
         else {
           alert("invalid passoword")
@@ -114,7 +116,7 @@ function Login(props) {
             window.sessionStorage.setItem("patientid", dbpatientid);
             window.sessionStorage.setItem("email", patientemail);
 
-          window.location.href = 'https://e-hospital.ca/route/PatientPortal';
+          window.location.href = '/route/PatientPortal';
         
       if (!(res.status === 200)) {
 		console.log("Some error occured in fetching api");
@@ -150,6 +152,8 @@ function Login(props) {
 
 
   return (
+    <div style={{ backgroundImage: `url(${background})` ,backgroundSize: 'cover' }}> 
+    <div style={{ backgroundColor: 'rgba(255,255,255,0.5)' }}> 
 
     <ThemeProvider theme={theme}>
       <Container component="main" maxWidth="xs">
@@ -170,6 +174,7 @@ function Login(props) {
           <Typography component="h1" variant="h5">
                  Sign in 
                   </Typography>
+                  <Box component="form" noValidate onSubmit={handleSubmit} sx={{ mt: -1 , marginBottom: 25}}>
           <Box component="form" noValidate onSubmit={handleSubmit} sx={{ width: 1 }} id='LoginForm' >
             <Grid sx={{  width: 1  }} >
             <Grid >
@@ -211,22 +216,26 @@ function Login(props) {
               fullWidth
               variant="contained"
               sx={{ mt: 3, mb: 2 }}
-            // onClick={handleCick}
+           
             >
               Sign In
             </Button>
             </Grid>
             <Grid item>
-                <Link href="https://e-hospital.ca/route/SignUp" variant="body2">
-                  {"Don't have an account? Sign Up"}
+                <Link href="/SignUp" variant="body2">
+                  Don't have an account? Sign Up
                 </Link>
               </Grid>
             </Grid>
           
           </Box>
         </Box>
+        </Box>
       </Container>
+      <Footer/>
     </ThemeProvider>
+    </div>
+      </div>
   );
 };
 export default Login;

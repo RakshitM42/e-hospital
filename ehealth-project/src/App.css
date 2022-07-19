@@ -4,8 +4,8 @@
   position: absolute;
   left: 0;
   width: 100%;
-  overflow: hidden;
-  background-image: "url(" + require("./749815.jpg") + ")";
+  overflow-x: hidden;
+  background-image: "url(" + require("./bg_ehospital.jpg") + ")";
   background-position: "center";
   background-size: "cover";
   background-repeat: "no-repeat";
